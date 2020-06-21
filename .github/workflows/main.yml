@@ -26,7 +26,5 @@ jobs:
       - name: Build application
         run: yarn build
           
-      - name: Deploy application
-        run: firebase deploy --token ${{ secrets.FIREBASE_TOKEN }} --only hosting
-          
-    
+      - name: CI-Firebase-hosting
+        uses: Danushka96/actions@v1.0
