@@ -6,8 +6,7 @@ name: Firebase Hosting deploy
 # events but only for the master branch
 on:
   push:
-    branches: 
-      - master
+    branches: [master]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -15,8 +14,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+          
       - name: Download dependency
-        run: yarn
+        run: yarn install
         
       - name: Build application
         run: yarn build
