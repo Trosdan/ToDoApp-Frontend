@@ -19,14 +19,16 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '10.x'
-          
+
       - name: Download dependency
         run: yarn install
-        
+
       - name: Build application
         run: yarn build
-          
-      - name: Deploy application
-        run: firebase deploy --token ${{ secrets.FIREBASE_TOKEN }} --only hosting
-          
-    
+
+      - name: Firebase hosting deploy
+      - uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
