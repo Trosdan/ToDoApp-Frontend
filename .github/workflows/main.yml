@@ -23,8 +23,30 @@ jobs:
       - name: Download dependency
         run: yarn install
 
+      - name: Set dotenv variables
+        uses: TickX/var-to-dotenv@v1.1.1
+        with:
+          key: 'REACT_APP_API_KEY' # [Required]
+          value: ${{secrets.REACT_APP_API_KEY}} # [Required]
+          key: 'REACT_APP_AUTH_DOMAIN' # [Required]
+          value: ${{secrets.REACT_APP_AUTH_DOMAIN}} # [Required]
+          key: 'REACT_APP_DATABASE_URL' # [Required]
+          value: ${{secrets.REACT_APP_DATABASE_URL}} # [Required]
+          key: 'REACT_APP_PROJECT_ID' # [Required]
+          value: ${{secrets.REACT_APP_PROJECT_ID}} # [Required]
+          key: 'REACT_APP_STORAGEBUCKET' # [Required]
+          value: ${{secrets.REACT_APP_STORAGEBUCKET}} # [Required]
+          key: 'REACT_APP_MESSAGING_SENDER_ID' # [Required]
+          value: ${{secrets.REACT_APP_MESSAGING_SENDER_ID}} # [Required]
+          key: 'REACT_APP_APP_ID' # [Required]
+          value: ${{secrets.REACT_APP_APP_ID}} # [Required]
+          key: 'REACT_APP_BASE_URL' # [Required]
+          value: ${{secrets.REACT_APP_BASE_URL}} # [Required]
+
+
       - name: Build application
         run: yarn build
+
 
       - name: Firebase hosting deploy
         uses: w9jds/firebase-action@master
