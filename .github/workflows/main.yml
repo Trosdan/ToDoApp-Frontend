@@ -28,48 +28,64 @@ jobs:
         with:
           key: 'REACT_APP_API_KEY' # [Required]
           value: ${{secrets.REACT_APP_API_KEY}} # [Required]
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
       - name: Set dotenv variables REACT_APP_AUTH_DOMAIN
         uses: TickX/var-to-dotenv@v1.1.1
         with:
           key: 'REACT_APP_AUTH_DOMAIN' # [Required]
           value: ${{secrets.REACT_APP_AUTH_DOMAIN}} # [Required]
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
       - name: Set dotenv variables REACT_APP_DATABASE_URL
         uses: TickX/var-to-dotenv@v1.1.1
         with:
           key: 'REACT_APP_DATABASE_URL' # [Required]
           value: ${{secrets.REACT_APP_DATABASE_URL}} # [Required]
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
       - name: Set dotenv variables REACT_APP_PROJECT_ID
         uses: TickX/var-to-dotenv@v1.1.1
         with:
           key: 'REACT_APP_PROJECT_ID' # [Required]
           value: ${{secrets.REACT_APP_PROJECT_ID}} # [Required]
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
       - name: Set dotenv variables REACT_APP_STORAGEBUCKET
         uses: TickX/var-to-dotenv@v1.1.1
         with:
           key: 'REACT_APP_STORAGEBUCKET' # [Required]
           value: ${{secrets.REACT_APP_STORAGEBUCKET}} # [Required]
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
       - name: Set dotenv variables REACT_APP_MESSAGING_SENDER_ID
         uses: TickX/var-to-dotenv@v1.1.1
         with:
           key: 'REACT_APP_MESSAGING_SENDER_ID' # [Required]
           value: ${{secrets.REACT_APP_MESSAGING_SENDER_ID}} # [Required]
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
       - name: Set dotenv variables REACT_APP_APP_ID
         uses: TickX/var-to-dotenv@v1.1.1
         with:
           key: 'REACT_APP_APP_ID' # [Required]
           value: ${{secrets.REACT_APP_APP_ID}} # [Required]
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
       - name: Set dotenv variables REACT_APP_BASE_URL
         uses: TickX/var-to-dotenv@v1.1.1
         with:
           key: 'REACT_APP_BASE_URL' # [Required]
           value: ${{secrets.REACT_APP_BASE_URL}} # [Required]
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
 
       - name: Build application
