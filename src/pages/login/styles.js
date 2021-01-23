@@ -52,6 +52,7 @@ export const ButtonGoogleLogin = styled.button`
   }
 
   span {
+    font-family: sans-serif;
     size: 14px;
     color: '#000000';
   }
