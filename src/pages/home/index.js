@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { toast } from 'react-toastify';
-import { AiOutlineDelete } from 'react-icons/ai';
+import { FiLogOut } from 'react-icons/fi';
 
-import { Container, DivListTodos, FabAddTodo, Header } from './styles';
+import { Container, Main, FabAddTodo, Header, HeaderContent } from './styles';
 
 import ModalTodo from '../../components/ModalTodo';
 import todoRest from '../../services/rest/todo';
+import CardTodo from '../../components/CardTodo';
 
 function Home() {
   const [todos, setTodos] = useState([]);
@@ -31,90 +32,106 @@ function Home() {
     setUser(JSON.parse(localStorage.getItem('@user:User')));
   }, []);
 
-  function handleLogout() {
+  const handleLogout = useCallback(() => {
     firebase.auth().signOut();
-  }
+  }, []);
 
-  function handleOpenNewModal() {
+  const handleOpenNewModal = useCallback(() => {
     setEditTodo({ id: '', title: '', content: '', completed: false });
     setIsModalOpen(true);
-  }
+  }, []);
 
-  function handleOpenModal(todo) {
+  const handleOpenModal = useCallback(todo => {
     setEditTodo(todo);
     setIsModalOpen(true);
-  }
+  }, []);
 
-  function handleCloseModal() {
-    setIsModalOpen(false);
-    getTodos();
-  }
-
-  async function getTodos() {
+  const getTodos = useCallback(async () => {
     try {
       setTodos(await todoRest.index());
     } catch (error) {
       toast(error.message, { type: 'error' });
     }
-  }
+  }, []);
 
-  async function handleChangeCompletedTodo(todo) {
-    todoRest
-      .update({ ...todo, completed: !todo.completed })
-      .then(() => {
-        getTodos();
-      })
-      .catch(error => {
-        toast(error.message, { type: 'error' });
-      });
-  }
+  const handleCloseModal = useCallback(() => {
+    setIsModalOpen(false);
+    getTodos();
+  }, [getTodos]);
 
-  async function handleDeleteTodo(id) {
-    todoRest
-      .delet(id)
-      .then(() => {
-        getTodos();
-      })
-      .catch(error => {
-        toast(error.message, { type: 'error' });
-      });
-  }
+  const handleChangeCompletedTodo = useCallback(
+    todo => {
+      todoRest
+        .update({ ...todo, completed: !todo.completed })
+        .then(() => {
+          const newListTodo = todos.map(todoMap =>
+            todoMap.id === todo.id
+              ? {
+                  ...todo,
+                  completed: !todo.completed,
+                }
+              : todoMap
+          );
+          setTodos(newListTodo);
+        })
+        .catch(error => {
+          toast(error.message, { type: 'error' });
+        });
+    },
+    [todos]
+  );
+
+  const handleDeleteTodo = useCallback(
+    id => {
+      todoRest
+        .delet(id)
+        .then(() => {
+          const newListTodo = todos.filter(todo => id !== todo.id && todo);
+          setTodos(newListTodo);
+        })
+        .catch(error => {
+          toast(error.message, { type: 'error' });
+        });
+    },
+    [todos]
+  );
+
+  const userDisplayName = useMemo(() => {
+    if (user) {
+      return user.displayName.split(' ')[0];
+    }
+    return '';
+  }, [user]);
 
   return (
     <Container>
       <Header>
-        <h3>{user && user.displayName}'s ToDo</h3>
-        <button type="button" onClick={handleLogout}>
-          SAIR
-        </button>
-      </Header>
-      <DivListTodos>
-        {todos.map(todo => (
-          <div className="content" key={todo.id}>
-            <button
-              type="button"
-              onClick={() => {
-                handleOpenModal(todo);
-              }}
-            >
-              <h3>{todo.title}</h3>
-              <p>{todo.content}</p>
+        <div>
+          <HeaderContent>
+            <h3>
+              Hello,
+              <strong>{userDisplayName}</strong>
+            </h3>
+            <p>Organize your tasks</p>
+          </HeaderContent>
+          <div>
+            <button type="button" onClick={handleLogout}>
+              <FiLogOut size={28} />
             </button>
-            <div className="footer">
-              <input
-                type="checkbox"
-                checked={todo.completed}
-                onChange={() => handleChangeCompletedTodo(todo)}
-              />
-              <AiOutlineDelete
-                className="deleteTodo"
-                size={18}
-                onClick={() => handleDeleteTodo(todo.id)}
-              />
-            </div>
           </div>
+        </div>
+      </Header>
+      <Main>
+        {todos.map(todo => (
+          <CardTodo
+            key={todo.id}
+            todo={todo}
+            handleOpenModal={handleOpenModal}
+            handleChangeCompletedTodo={handleChangeCompletedTodo}
+            handleDeleteTodo={handleDeleteTodo}
+          />
         ))}
-      </DivListTodos>
+      </Main>
       <FabAddTodo onClick={handleOpenNewModal}>
         <p>+</p>
       </FabAddTodo>

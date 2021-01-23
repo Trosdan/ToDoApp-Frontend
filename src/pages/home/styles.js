@@ -10,77 +10,76 @@ export const Container = styled.div`
 
 export const Header = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
-  height: 55px;
+
+  height: 150px;
   width: 100%;
   background-color: #f29d4e;
   box-shadow: 0px 0px 4px #000;
-  padding-left: 10px;
 
-  button {
+  justify-content: center;
+
+  > div {
     display: flex;
-    align-items: center;
-    padding: 25px;
-    height: 100%;
-    background: none;
-    border: 0;
+    flex-direction: row;
 
-    font-weight: bold;
-    font-size: 18px;
+    margin: 0 16px;
 
-    :hover {
-      background-color: rgba(0, 0, 0, 0.1);
+    width: 1440px;
+
+    button {
+      display: flex;
+      background: none;
+      border: 0;
+
+      margin: 16px 0;
+      padding: 12px;
+
+      border-radius: 50%;
+
+      font-weight: bold;
+      font-size: 18px;
+
+      :hover {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
     }
   }
 `;
 
-export const DivListTodos = styled.div`
-  display: grid;
-  grid-gap: 15px;
-  grid-template-columns: repeat(2, 1fr);
-  padding-top: 10px;
-  padding-bottom: 10px;
+export const HeaderContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 
-  button {
+  margin: 0 0 15px;
+
+  > h3 {
+    display: flex;
     flex: 1;
-    display: flex;
-    padding: 10px;
     flex-direction: column;
-    background: none;
-    border: 0;
+
+    margin: 0 0 5px;
+
+    justify-content: flex-end;
+
+    font-size: 26px;
   }
+`;
 
-  .content {
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-    min-height: 100px;
-    background: #f29d4e;
-    border-radius: 8px;
-    box-shadow: 0px 0px 4px #000;
+export const Main = styled.main`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  background: #fcfcfc;
 
-    input {
-      background-color: #c4a689;
-      color: #000;
-      :hover {
-        cursor: pointer;
-      }
-    }
+  width: calc(100% - 16px);
+  max-width: 720px;
 
-    .footer {
-      display: flex;
-      justify-content: space-between;
-      padding: 5px;
+  margin: -10px 16px 0;
+  padding: 16px;
 
-      .deleteTodo {
-        :hover {
-          cursor: pointer;
-        }
-      }
-    }
-  }
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 `;
 
 export const FabAddTodo = styled.button`

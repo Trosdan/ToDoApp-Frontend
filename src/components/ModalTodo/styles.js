@@ -2,69 +2,105 @@ import styled from 'styled-components';
 import ReactModal from 'react-modal';
 
 export const Modal = styled(ReactModal)`
-  background-color: #f29d4e;
-  margin: auto;
-  margin-top: 10px;
-  padding: 15px;
-  border-radius: 4px;
-  box-shadow: 1px 1px 5px black;
-  width: 75%;
-  height: 75%;
-`;
-
-export const Container = styled.div`
   display: flex;
-  height: 100%;
-  flex: 1;
+
+  position: absolute;
+  bottom: 0;
+
+  width: 100%;
+  height: 50%;
+
+  padding: 15px;
+
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+
+  background: white;
+  box-shadow: 1px 1px 5px black;
 
   form {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    flex: 1;
+  }
+`;
+
+export const HeaderModalTask = styled.div`
+  display: flex;
+  align-items: center;
+
+  h3 {
+    flex: 1;
+    font-size: 32px;
+  }
+
+  button {
+    height: 32px;
+    padding: 0 16px;
+    border-radius: 8px;
+    border: none;
+    background: #f29d4e;
+
+    font-weight: bold;
+  }
+`;
+
+export const Container = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  > div {
+    display: flex;
+    flex-direction: row;
+  }
+
+  input {
+    height: 42px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    padding: 5px;
+    background-color: gainsboro;
+    border: none;
+    border-radius: 4px;
+
+    :focus {
+      border: 1px solid #f29d4e;
+    }
+
+    ::placeholder {
+      color: black;
+    }
+  }
+
+  .title {
+    flex: 1;
+    padding: 0 0 0 8px;
+  }
+
+  .content {
+    padding: 0 0 0 8px;
+    margin-bottom: 10px;
+    padding: 5px;
+    background-color: gainsboro;
+    border: none;
+    border-radius: 4px;
+    resize: none;
+
     flex: 1;
 
-    input {
-      margin-bottom: 10px;
-      padding: 5px;
-      background-color: #c4a689;
-      border: 1px solid gray;
-      border-radius: 4px;
-
-      ::placeholder {
-        color: black;
-      }
+    ::placeholder {
+      color: black;
     }
 
-    .title {
+    :focus {
+      border: 1px solid #f29d4e;
     }
+  }
 
-    .content {
-      margin-bottom: 10px;
-      padding: 5px;
-      background-color: #c4a689;
-      border: 1px solid gray;
-      border-radius: 4px;
-      resize: none;
-      flex: 1;
-
-      ::placeholder {
-        color: black;
-      }
-    }
-
-    .completed {
-      align-self: flex-end;
-      height: 25px;
-      width: 25px;
-    }
-
-    button {
-      height: 55px;
-      border-radius: 4px;
-      border: 1px solid gray;
-      background: #cce290;
-
-      font-weight: bold;
-    }
+  .completed {
+    margin: 0 0 0 8px;
+    height: 42px;
+    width: 42px;
   }
 `;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import todoRest from '../../services/rest/todo';
 
-import { Modal, Container } from './styles';
+import { Modal, Container, HeaderModalTask } from './styles';
 
 Modal.setAppElement(document.getElementById('root'));
 
@@ -42,29 +42,34 @@ function ModelTodo({ isModalOpen, todo, handleCloseModal }) {
 
   return (
     <Modal isOpen={isModalOpen} onRequestClose={handleCloseModal}>
-      <Container>
-        <form onSubmit={handleSubmit}>
-          <input
-            className="title"
-            placeholder="Titulo"
-            value={title}
-            onChange={e => setTitle(e.target.value)}
-          />
+      <form onSubmit={handleSubmit}>
+        <HeaderModalTask>
+          <h3>Task</h3>
+          <button type="submit">SALVAR</button>
+        </HeaderModalTask>
+        <Container>
+          <div>
+            <input
+              className="title"
+              placeholder="Titulo"
+              value={title}
+              onChange={e => setTitle(e.target.value)}
+            />
+            <input
+              className="completed"
+              type="checkbox"
+              checked={completed}
+              onChange={() => setCompleted(!completed)}
+            />
+          </div>
           <textarea
             className="content"
             placeholder="Descrição"
             value={content}
             onChange={e => setContent(e.target.value)}
           />
-          <input
-            className="completed"
-            type="checkbox"
-            checked={completed}
-            onChange={() => setCompleted(!completed)}
-          />
-          <button type="submit">SALVAR</button>
-        </form>
-      </Container>
+        </Container>
+      </form>
     </Modal>
   );
 }

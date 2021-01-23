@@ -1,14 +1,14 @@
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
 
   * {
     margin: 0;
     padding: 0;
     outline: 0;
     box-sizing: border-box;
-    font-family: 'Roboto';
+    font-family: 'Roboto Slab';
   }
   *:focus {
     outline: 0;
@@ -40,5 +40,9 @@ export default createGlobalStyle`
 
   button {
     cursor: pointer;
+  }
+
+  .ReactModal__Overlay {
+    background-color: rgba(0,0,0,0.5) !important;
   }
 `;
