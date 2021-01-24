@@ -6,7 +6,7 @@ The entire project is hosted on Firebase using Hosting for ReactJS and Function 
 
 <p align='center'>
   <img
-    src='assets_readme/LayoutWeb.png'
+    src='assets_readme/layoutWeb.png'
     align='center'
     height='400'
   />
