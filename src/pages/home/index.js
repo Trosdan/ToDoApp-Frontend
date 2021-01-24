@@ -19,10 +19,6 @@ function Home() {
   const { search } = useLocation();
 
   useEffect(() => {
-    if (search.includes('?todo=new')) handleOpenNewModal();
-  }, []);
-
-  useEffect(() => {
     async function indexTodo() {
       try {
         setTodos(await todoRest.index());
@@ -100,6 +96,10 @@ function Home() {
     }
     return '';
   }, [user]);
+
+  useEffect(() => {
+    if (search.includes('?todo=new')) handleOpenNewModal();
+  }, [handleOpenNewModal, search]);
 
   return (
     <Container>

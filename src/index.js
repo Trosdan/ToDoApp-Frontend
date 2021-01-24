@@ -1,7 +1,9 @@
 import React from 'react';
 import firebase from 'firebase/app';
 import ReactDOM from 'react-dom';
-import { register } from './service-worker';
+
+import * as serviceWorker from './serviceWorker';
+
 import App from './App';
 
 firebase.initializeApp({
@@ -16,4 +18,4 @@ firebase.initializeApp({
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
-register();
+serviceWorker.register();
