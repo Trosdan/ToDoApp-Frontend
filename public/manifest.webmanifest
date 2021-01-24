@@ -32,7 +32,7 @@
     {
       "name": "Create new tasks",
       "short_name": "New Task",
-      "url": "?todo=new",
+      "url": "/home?todo=new",
       "icons": [
         {
           "src": "images/icon-192x192.png",
