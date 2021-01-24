@@ -4,6 +4,7 @@ import 'firebase/auth';
 import { toast } from 'react-toastify';
 import { FiLogOut } from 'react-icons/fi';
 
+import { useLocation } from 'react-router-dom';
 import { Container, Main, FabAddTodo, Header, HeaderContent } from './styles';
 
 import ModalTodo from '../../components/ModalTodo';
@@ -15,6 +16,11 @@ function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editTodo, setEditTodo] = useState({});
   const [user, setUser] = useState(null);
+  const { search } = useLocation();
+
+  useEffect(() => {
+    if (search.includes('?todo=new')) handleOpenNewModal();
+  }, []);
 
   useEffect(() => {
     async function indexTodo() {
