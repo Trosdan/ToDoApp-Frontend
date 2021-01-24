@@ -16,8 +16,15 @@ const CardTodo = ({
         <h3>{todo.title}</h3>
         <p>{todo.content}</p>
       </div>
-      <CheckBox onClick={() => handleChangeCompletedTodo(todo)}>
-        {todo.completed ? <FiCheckCircle size={16} /> : <FiCircle size={16} />}
+      <CheckBox>
+        {todo.completed ? (
+          <FiCheckCircle
+            onClick={() => handleChangeCompletedTodo(todo)}
+            size={16}
+          />
+        ) : (
+          <FiCircle onClick={() => handleChangeCompletedTodo(todo)} size={16} />
+        )}
         <FiDelete onClick={() => handleDeleteTodo(todo.id)} size={16} />
       </CheckBox>
     </Container>

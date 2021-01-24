@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
+  flex-direction: row;
 
   background: white;
   border-radius: 8px;
@@ -10,7 +11,7 @@ export const Container = styled.div`
 
   box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
 
-  > div {
+  > div:first-child {
     flex: 1;
 
     overflow: hidden;
@@ -33,11 +34,17 @@ export const Container = styled.div`
   }
 `;
 
-export const CheckBox = styled.button`
-  background: none;
-  border: none;
+export const CheckBox = styled.div`
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
 
   svg {
     margin: 0 4px 0;
+
+    :hover {
+      cursor: pointer;
+    }
   }
 `;

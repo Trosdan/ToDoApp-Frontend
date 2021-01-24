@@ -64,21 +64,13 @@ function Home() {
       todoRest
         .update({ ...todo, completed: !todo.completed })
         .then(() => {
-          const newListTodo = todos.map(todoMap =>
-            todoMap.id === todo.id
-              ? {
-                  ...todo,
-                  completed: !todo.completed,
-                }
-              : todoMap
-          );
-          setTodos(newListTodo);
+          getTodos();
         })
         .catch(error => {
           toast(error.message, { type: 'error' });
         });
     },
-    [todos]
+    [getTodos]
   );
 
   const handleDeleteTodo = useCallback(
