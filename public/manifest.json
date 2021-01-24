@@ -1,0 +1,44 @@
+{
+  "short_name": "ToDo App",
+  "name": "ToDo App",
+  "description": "App to create and organize tasks",
+  "icons": [
+    {
+      "src": "images/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#f29d4e",
+  "background_color": "#c4a689",
+  "shortcuts": [
+    {
+      "name": "Create new tasks",
+      "short_name": "New Task",
+      "url": "?todo=new",
+      "icons": [
+        {
+          "src": "images/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
