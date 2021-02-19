@@ -25,14 +25,14 @@ function ModelTodo({ isModalOpen, todo, handleCloseModal }) {
     try {
       if (todo.id) {
         await todoRest.update({ id, title, content, completed });
-        toast('Anotação atualizada', { type: 'success' });
+        toast('Updated task.', { type: 'success' });
       } else {
         await todoRest.create({
           title,
           content,
           completed,
         });
-        toast('Anotação criado', { type: 'success' });
+        toast('Created task', { type: 'success' });
       }
       handleCloseModal();
     } catch (error) {
@@ -45,13 +45,13 @@ function ModelTodo({ isModalOpen, todo, handleCloseModal }) {
       <form onSubmit={handleSubmit}>
         <HeaderModalTask>
           <h3>Task</h3>
-          <button type="submit">SALVAR</button>
+          <button type="submit">SAVE</button>
         </HeaderModalTask>
         <Container>
           <div>
             <input
               className="title"
-              placeholder="Titulo"
+              placeholder="Title"
               value={title}
               onChange={e => setTitle(e.target.value)}
             />
@@ -64,7 +64,7 @@ function ModelTodo({ isModalOpen, todo, handleCloseModal }) {
           </div>
           <textarea
             className="content"
-            placeholder="Descrição"
+            placeholder="Description"
             value={content}
             onChange={e => setContent(e.target.value)}
           />
