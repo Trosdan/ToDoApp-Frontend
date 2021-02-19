@@ -21,7 +21,7 @@ api.interceptors.response.use(
   error => {
     if (error.response.status === 401) {
       localStorage.clear();
-      toast('Sessão expirada.', { type: 'warning' });
+      toast('Session expired.', { type: 'warning' });
       history.push('/');
     }
     return error;

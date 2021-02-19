@@ -25,11 +25,11 @@ function Login() {
   return (
     <Container>
       <DivLogin>
-        <h3>Bem vindo ao ToDo Application</h3>
-        <p>Faça suas anotações de uma forma simples.</p>
+        <h3>Welcome to ToDo Application</h3>
+        <p>Make your notes in a simple way.</p>
         <ButtonGoogleLogin type="button" onClick={firebaseLogin}>
           <img src={googleIcon} alt="Google Icon" />
-          <span>FAÇA LOGIN COM GOOGLE</span>
+          <span>LOGIN WITH GOOGLE</span>
         </ButtonGoogleLogin>
       </DivLogin>
     </Container>

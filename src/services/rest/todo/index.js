@@ -5,7 +5,7 @@ const index = async () => {
     const { data } = await api.get('/todo');
     return data;
   } catch (error) {
-    throw Error('Não foi possivel carregar as anotações');
+    throw Error('Could not load the tasks.');
   }
 };
 
@@ -14,7 +14,7 @@ const show = async id => {
     const { data } = await api.get(`/todo/${id}`);
     return data;
   } catch (error) {
-    throw Error('Não foi possivel carregar as anotações');
+    throw Error('Could not load the tasks.');
   }
 };
 
@@ -23,7 +23,7 @@ const create = async todo => {
     const { data } = await api.post(`/todo`, todo);
     return data;
   } catch (error) {
-    throw Error('Não foi possivel criar a anotação');
+    throw Error('It was not possible to create a task.');
   }
 };
 
@@ -36,7 +36,7 @@ const update = async todo => {
     });
     return data;
   } catch (error) {
-    throw Error('Não foi possivel atualizar a anotação');
+    throw Error('Could not update task.');
   }
 };
 
@@ -45,7 +45,7 @@ const delet = async id => {
     const { data } = await api.delete(`/todo/${id}`);
     return data;
   } catch (error) {
-    throw Error('Não foi possivel deletar a anotação');
+    throw Error('It was not possible to delete the task.');
   }
 };
 
